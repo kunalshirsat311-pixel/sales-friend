@@ -1,0 +1,164 @@
+[debug] [2026-09-07T20:54:16.469Z] ----------------------------------------------------------------------
+[debug] [2026-09-07T20:54:16.472Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:sdkconfig ios 1:240183454171:ios:0c41bd96af6313d07b1ffe --json
+[debug] [2026-09-07T20:54:16.472Z] CLI Version:   15.19.1
+[debug] [2026-09-07T20:54:16.472Z] Platform:      win32
+[debug] [2026-09-07T20:54:16.472Z] Node Version:  v24.16.0
+[debug] [2026-09-07T20:54:16.472Z] Time:          Tue Sep 08 2026 02:24:16 GMT+0530 (India Standard Time)
+[debug] [2026-09-07T20:54:16.472Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-07T20:54:16.475Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-09-07T20:54:18.368Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-09-07T20:54:18.378Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-07T20:54:18.379Z] > authorizing via signed-in user (kunalshirsat03@gmail.com)
+[debug] [2026-09-07T20:54:18.463Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.464Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.464Z] > refreshing access token with scopes: []
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-07T20:54:16.323Z] ----------------------------------------------------------------------
+[debug] [2026-09-07T20:54:16.332Z] ----------------------------------------------------------------------
+[debug] [2026-09-07T20:54:16.407Z] ----------------------------------------------------------------------
+[debug] [2026-09-07T20:54:16.335Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:sdkconfig ios 1:240183454171:ios:0c41bd96af6313d07b1ffe --json
+[debug] [2026-09-07T20:54:16.336Z] CLI Version:   15.19.1
+[debug] [2026-09-07T20:54:16.336Z] Platform:      win32
+[debug] [2026-09-07T20:54:16.336Z] Node Version:  v24.16.0
+[debug] [2026-09-07T20:54:16.336Z] Time:          Tue Sep 08 2026 02:24:16 GMT+0530 (India Standard Time)
+[debug] [2026-09-07T20:54:16.336Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-07T20:54:16.340Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-09-07T20:54:18.373Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-09-07T20:54:18.382Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-07T20:54:18.382Z] > authorizing via signed-in user (kunalshirsat03@gmail.com)
+[debug] [2026-09-07T20:54:18.464Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.464Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.464Z] > refreshing access token with scopes: []
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-07T20:54:16.327Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:sdkconfig web 1:240183454171:web:e038323ef8eef37e7b1ffe --json
+[debug] [2026-09-07T20:54:16.327Z] CLI Version:   15.19.1
+[debug] [2026-09-07T20:54:16.328Z] Platform:      win32
+[debug] [2026-09-07T20:54:16.328Z] Node Version:  v24.16.0
+[debug] [2026-09-07T20:54:16.328Z] Time:          Tue Sep 08 2026 02:24:16 GMT+0530 (India Standard Time)
+[debug] [2026-09-07T20:54:16.328Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-07T20:54:16.333Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-09-07T20:54:18.365Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-09-07T20:54:18.374Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-07T20:54:18.375Z] > authorizing via signed-in user (kunalshirsat03@gmail.com)
+[debug] [2026-09-07T20:54:18.462Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.462Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.463Z] > refreshing access token with scopes: []
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-09-07T20:54:18.466Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-07T20:54:16.413Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:sdkconfig android 1:240183454171:android:6ab64b9997b0dda67b1ffe --json
+[debug] [2026-09-07T20:54:16.414Z] CLI Version:   15.19.1
+[debug] [2026-09-07T20:54:16.414Z] Platform:      win32
+[debug] [2026-09-07T20:54:16.414Z] Node Version:  v24.16.0
+[debug] [2026-09-07T20:54:16.414Z] Time:          Tue Sep 08 2026 02:24:16 GMT+0530 (India Standard Time)
+[debug] [2026-09-07T20:54:16.414Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-07T20:54:16.418Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-09-07T20:54:18.380Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2026-09-07T20:54:18.471Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-07T20:54:18.471Z] > authorizing via signed-in user (kunalshirsat03@gmail.com)
+[debug] [2026-09-07T20:54:18.476Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.476Z] Checked if tokens are valid: false, expires at: 1780779250247
+[debug] [2026-09-07T20:54:18.476Z] > refreshing access token with scopes: []
+[debug] [2026-09-07T20:54:18.477Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-09-07T20:54:18.477Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-09-07T20:54:19.100Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-09-07T20:54:19.101Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-09-07T20:54:19.101Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-09-07T20:54:19.101Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-09-07T20:54:19.102Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[warn] !  Unable to fetch the CLI MOTD and remote config. This is not a fatal error, but may indicate an issue with your network connection. 
+[debug] [2026-09-07T20:54:19.109Z] Failed to fetch MOTD Error: EPERM: operation not permitted, rename 'C:\Users\Kunal\.config\configstore\firebase-tools.json.261439423' -> 'C:\Users\Kunal\.config\configstore\firebase-tools.json'
+[debug] [2026-09-07T20:54:19.102Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[warn] !  Unable to fetch the CLI MOTD and remote config. This is not a fatal error, but may indicate an issue with your network connection. 
+[debug] [2026-09-07T20:54:19.109Z] Failed to fetch MOTD Error: EPERM: operation not permitted, rename 'C:\Users\Kunal\.config\configstore\firebase-tools.json.2576368088' -> 'C:\Users\Kunal\.config\configstore\firebase-tools.json'
+[debug] [2026-09-07T20:54:19.100Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-09-07T20:54:19.101Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-09-07T20:54:19.116Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-09-07T20:54:19.116Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-09-07T20:54:19.117Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-09-07T20:54:19.119Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-09-07T20:54:19.116Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.129Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.117Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.129Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.117Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.132Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.119Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.137Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2026-09-07T20:54:19.303Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:177:12)
+    at refreshTokens (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:590:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async getAccessToken (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:52:18)
+    at async Client.addAuthHeader (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:182:21)
+    at async Client.request (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:129:34)
+    at async getAppConfig (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\apps.js:436:26)
+    at async Command.actionFn (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\apps-sdkconfig.js:69:22)
+[debug] [2026-09-07T20:54:19.304Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:177:12)
+    at refreshTokens (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:590:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async getAccessToken (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:52:18)
+    at async Client.addAuthHeader (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:182:21)
+    at async Client.request (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:129:34)
+    at async getAppConfig (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\apps.js:436:26)
+    at async Command.actionFn (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\apps-sdkconfig.js:69:22)
+[debug] [2026-09-07T20:54:19.303Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:177:12)
+    at refreshTokens (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:590:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async getAccessToken (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:52:18)
+    at async Client.addAuthHeader (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:182:21)
+    at async Client.request (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:129:34)
+    at async getAppConfig (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\apps.js:436:26)
+    at async Command.actionFn (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\apps-sdkconfig.js:69:22)
+[debug] [2026-09-07T20:54:19.303Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:177:12)
+    at refreshTokens (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:590:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async getAccessToken (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:52:18)
+    at async Client.addAuthHeader (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:182:21)
+    at async Client.request (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:129:34)
+    at async getAppConfig (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\apps.js:436:26)
+    at async Command.actionFn (C:\Users\Kunal\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\apps-sdkconfig.js:69:22)
+[error] 
+[error] 
+[error] 
+[error] Error: Failed to get IOS app configuration. See firebase-debug.log for more info.
+[error] 
+[error] Error: Failed to get WEB app configuration. See firebase-debug.log for more info.
+[error] Error: Failed to get ANDROID app configuration. See firebase-debug.log for more info.
+[error] Error: Failed to get IOS app configuration. See firebase-debug.log for more info.

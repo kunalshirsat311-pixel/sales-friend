@@ -6,8 +6,10 @@ import '../models/visit_model.dart';
 import 'login_screen.dart';
 import 'new_visit_screen.dart';
 import 'visit_detail_screen.dart';
+import 'profile_screen.dart';
 import 'share_access_screen.dart';
 import 'manager_dashboard_screen.dart';
+import 'settings_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -20,7 +22,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final AuthService _authService = AuthService();
   final String _userId = FirebaseAuth.instance.currentUser!.uid;
 
-  // ─── LOGOUT ─────────────────────────────────────────────────
   Future<void> _logout() async {
     await _authService.logout();
     if (mounted) {
@@ -31,7 +32,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
-  // ─── FORMAT TIME ─────────────────────────────────────────────
   String _formatTime(DateTime dt) {
     String period = dt.hour >= 12 ? 'PM' : 'AM';
     int hour = dt.hour > 12
@@ -43,7 +43,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return '$hour:$minute $period';
   }
 
-  // ─── FORMAT DATE ─────────────────────────────────────────────
   String _formatDate(DateTime dt) {
     List<String> months = [
       'Jan',
@@ -62,7 +61,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return '${dt.day} ${months[dt.month - 1]} ${dt.year}';
   }
 
-  // ─── BUILD UI ────────────────────────────────────────────────
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,8 +78,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.share, color: Colors.white),
-            tooltip: 'Share with Manager',
+            icon: const Icon(Icons.qr_code_2, color: Colors.white),
+            tooltip: 'Share Access Code',
             onPressed: () {
               Navigator.push(
                 context,
@@ -90,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.admin_panel_settings, color: Colors.white),
+            icon: const Icon(Icons.supervisor_account, color: Colors.white),
             tooltip: 'Manager View',
             onPressed: () {
               Navigator.push(
@@ -102,26 +100,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.logout, color: Colors.white),
-            onPressed: _logout,
+            icon: const Icon(Icons.settings, color: Colors.white),
+            tooltip: 'Settings',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            tooltip: 'Profile',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ProfileScreen()),
+              );
+            },
           ),
         ],
       ),
-
-      // ── Visit Feed using StreamBuilder ──
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('visits')
             .where('userId', isEqualTo: _userId)
-            .orderBy('visitTime', descending: true)
             .snapshots(),
         builder: (context, snapshot) {
-          // Still loading
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          // Error
           if (snapshot.hasError) {
             return Center(
               child: Column(
@@ -134,16 +143,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Something went wrong.\nPlease try again.',
+                    'Error: ${snapshot.error}',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey.shade600),
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
                   ),
                 ],
               ),
             );
           }
 
-          // No visits yet
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(
               child: Column(
@@ -156,7 +164,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'No visits yet today',
+                    'No visits yet',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -173,7 +181,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             );
           }
 
-          // Build visit list
           List<VisitModel> visits = snapshot.data!.docs.map((doc) {
             return VisitModel.fromMap(doc.data() as Map<String, dynamic>);
           }).toList();
@@ -187,7 +194,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.all(16),
               itemCount: visits.length + 1,
               itemBuilder: (context, index) {
-                // Header — total count
                 if (index == 0) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16),
@@ -224,8 +230,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   );
                 }
-
-                // Visit card
                 VisitModel visit = visits[index - 1];
                 return _buildVisitCard(visit);
               },
@@ -233,8 +237,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           );
         },
       ),
-
-      // ── Floating Action Button ──
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
@@ -252,7 +254,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // ─── VISIT CARD WIDGET ───────────────────────────────────────
   Widget _buildVisitCard(VisitModel visit) {
     return GestureDetector(
       onTap: () {
@@ -270,7 +271,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         child: Row(
           children: [
-            // ── Photo Thumbnail or Placeholder ──
             ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(14),
@@ -288,15 +288,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     )
                   : _buildPhotoPlaceholder(),
             ),
-
-            // ── Visit Info ──
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Client name
                     Text(
                       visit.clientName,
                       style: TextStyle(
@@ -307,10 +304,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-
                     const SizedBox(height: 4),
-
-                    // Location
                     Row(
                       children: [
                         Icon(
@@ -332,10 +326,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ],
                     ),
-
                     const SizedBox(height: 4),
-
-                    // Notes preview
                     if (visit.notes.isNotEmpty)
                       Text(
                         visit.notes,
@@ -346,10 +337,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-
                     const SizedBox(height: 6),
-
-                    // Date and time row
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -384,8 +372,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
             ),
-
-            // ── Arrow ──
             Padding(
               padding: const EdgeInsets.only(right: 12),
               child: Icon(
@@ -400,7 +386,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // ─── PHOTO PLACEHOLDER ───────────────────────────────────────
   Widget _buildPhotoPlaceholder() {
     return Container(
       width: 90,

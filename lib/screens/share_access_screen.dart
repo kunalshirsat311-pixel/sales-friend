@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:math';
+import 'package:flutter/services.dart';
+import '../services/share_service.dart';
 
 class ShareAccessScreen extends StatefulWidget {
   const ShareAccessScreen({super.key});
@@ -11,155 +10,109 @@ class ShareAccessScreen extends StatefulWidget {
 }
 
 class _ShareAccessScreenState extends State<ShareAccessScreen> {
+  final ShareService _shareService = ShareService();
   String? _shareCode;
-  bool _isLoading = false;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadExistingCode();
+    _loadOrCreateCode();
   }
 
-  Future<void> _loadExistingCode() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final doc = await FirebaseFirestore.instance
-        .collection('salesmen')
-        .doc(user.uid)
-        .get();
-
-    if (doc.exists && doc.data()?['shareCode'] != null) {
-      setState(() {
-        _shareCode = doc.data()?['shareCode'];
-      });
+  Future<void> _loadOrCreateCode() async {
+    setState(() => _isLoading = true);
+    try {
+      String? existing = await _shareService.getExistingCode();
+      if (existing != null) {
+        setState(() => _shareCode = existing);
+      } else {
+        String newCode = await _shareService.generateShareCode();
+        setState(() => _shareCode = newCode);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Failed to load code: $e')));
+      }
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
-  Future<void> _generateCode() async {
-    setState(() => _isLoading = true);
-
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final code = (100000 + Random().nextInt(900000)).toString();
-
-    await FirebaseFirestore.instance.collection('salesmen').doc(user.uid).set({
-      'shareCode': code,
-      'name': user.displayName ?? 'Salesman',
-      'email': user.email,
-      'createdAt': FieldValue.serverTimestamp(),
-    }, SetOptions(merge: true));
-
-    setState(() {
-      _shareCode = code;
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _revokeCode() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    await FirebaseFirestore.instance
-        .collection('salesmen')
-        .doc(user.uid)
-        .update({'shareCode': FieldValue.delete()});
-
-    setState(() => _shareCode = null);
+  void _copyToClipboard() {
+    if (_shareCode == null) return;
+    Clipboard.setData(ClipboardData(text: _shareCode!));
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Code copied to clipboard!')));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Share with Manager'),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Give your manager a 6-digit code to view your visits in real time.',
-              style: TextStyle(fontSize: 16, color: Colors.black87),
-            ),
-            const SizedBox(height: 32),
-            if (_shareCode != null) ...[
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple.shade50,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.deepPurple, width: 2),
-                ),
+      appBar: AppBar(title: const Text('Share Manager Access')),
+      body: Center(
+        child: _isLoading
+            ? const CircularProgressIndicator()
+            : Padding(
+                padding: const EdgeInsets.all(24.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const Icon(
+                      Icons.share_outlined,
+                      size: 72,
+                      color: Colors.blueAccent,
+                    ),
+                    const SizedBox(height: 20),
                     const Text(
-                      'Your Share Code',
-                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                      'Your 6-Digit Share Code',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      _shareCode!,
-                      style: const TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
-                        letterSpacing: 8,
+                    const Text(
+                      'Share this code with your manager so they can view your visit logs in real time.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(height: 28),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 28,
+                        vertical: 16,
                       ),
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade50,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Colors.blue.shade200,
+                          width: 2,
+                        ),
+                      ),
+                      child: Text(
+                        _shareCode ?? '------',
+                        style: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 8,
+                          color: Colors.blueAccent,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton.icon(
+                      onPressed: _copyToClipboard,
+                      icon: const Icon(Icons.copy),
+                      label: const Text('Copy Code'),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: _revokeCode,
-                  icon: const Icon(Icons.delete_outline),
-                  label: const Text('Revoke Access'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                ),
-              ),
-            ] else ...[
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: _isLoading ? null : _generateCode,
-                  icon: _isLoading
-                      ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        )
-                      : const Icon(Icons.refresh),
-                  label: Text(_isLoading ? 'Generating...' : 'Generate Code'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                ),
-              ),
-            ],
-            const Spacer(),
-            const Text(
-              'Tip: Share this code verbally or via WhatsApp. Your manager enters it once and sees all your visits instantly.',
-              style: TextStyle(fontSize: 12, color: Colors.black45),
-            ),
-          ],
-        ),
       ),
     );
   }
